@@ -6,17 +6,29 @@ function swapColumns(line, delimiter = ';') { //Refactor this to one line in fut
   return reversedElements.join(delimiter);
 }
 
-function limitReview(line, delimiter = ';') { //Review must be the SECOND column, Switch to limitString?
+function limitReview(line, delimiter = ';') { //Review must be the SECOND column, Switch to limitString?, or simply use .slice(0,20)? no function?
   let elements = line.split(delimiter);
   let trimmedReview = [elements[0],elements[1].slice(0,20)];
   return trimmedReview.join(delimiter);
 }
 
+function removeExistingOutputFile(outputFile) {
+  if (fs.existsSync(outputFile)) {
+    fs.unlinkSync(outputFile);
+  }
+}
+
 function parseFile (indata, outdata, delimiter = ';') {
   if (!fs.existsSync(indata)) {
-    return -1
+    return -1;
+
   } else {
-    return `File exists`
+    removeExistingOutputFile(outdata);
+    const data = fs.readFileSync(indata, 'utf-8');
+    const lines = data.split(/\n/);
+    for (let line of lines) {
+
+    }
   }
 
   //Ignore first row of data i.e. let i=1
@@ -30,7 +42,7 @@ function parseFile (indata, outdata, delimiter = ';') {
 
 // lineString = limitReview(lineString)
 // console.log(limitReview(lineString))
-console.log(parseFile('datafile.csv'))
+parseFile('testdata.csv', 'outputtest.csv')
 
 
 // Leave this code here for the automated tests
