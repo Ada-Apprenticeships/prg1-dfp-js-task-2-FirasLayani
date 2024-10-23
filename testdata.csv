@@ -1,5 +1,5 @@
-review;sentiment
-this was so good;positive
-trash icl;negative
-amazingyeboiiiiiiiiiiiiiiiiii;positive
-abcdefghijklmnopqrstuvwxyz;negative
+review,sentiment
+this was so good,positive
+trash icl,negative
+amazingyeboiiiiiiiiiiiiiiiiii,positive
+abcdefghijklmnopqrstuvwxyz,negative

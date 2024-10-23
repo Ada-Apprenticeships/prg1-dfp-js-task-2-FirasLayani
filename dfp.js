@@ -1,14 +1,15 @@
 const fs = require('fs');
+const { parse } = require('path');
 
-function swapColumns(line, delimiter = ';') { //Refactor this to one line in future
-  let elements = line.split(delimiter);
-  let reversedElements = [elements[1], elements[0]];  // .reverse() ?
-  return reversedElements.join(delimiter);
+function swapColumns(line, delimiter = ';') {
+  return line.split(delimiter).reverse().join(delimiter)
 }
 
 function limitReview(line, delimiter = ';') { //Review must be the SECOND column, Switch to limitString?, or simply use .slice(0,20)? no function?
   let elements = line.split(delimiter);
+  console.log(elements)
   let trimmedReview = [elements[0],elements[1].slice(0,20)];
+  console.log(trimmedReview)
   return trimmedReview.join(delimiter);
 }
 
@@ -27,15 +28,15 @@ function parseFile (indata, outdata, delimiter = ';') {
     const data = fs.readFileSync(indata, 'utf-8');
     const lines = data.split(/\n/);
     for (let line of lines) {
-      fs.appendFileSync(outdata, limitReview(swapColumns(line))+'\n')
+      fs.appendFileSync(outdata, limitReview(swapColumns(line,delimiter))+'\n')
     }
   }
 }
 
 // Testing
 
-parseFile('testdata.csv', 'outputtest.csv')
-
+//parseFile('testdata.csv', 'outputtest.csv', ',')
+parseFile('datafile.csv', 'outputFile.csv', ';')
 
 // Leave this code here for the automated tests
 module.exports = {
