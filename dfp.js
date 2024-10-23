@@ -7,7 +7,7 @@ function swapColumns(line, delimiter = ';') {
 
 function limitReview(line, delimiter = ';') { //Review must be the SECOND column, Switch to limitString?, or simply use .slice(0,20)? no function?
   let elements = line.split(delimiter);
-  let trimmedReview = [elements[0],elements[1].slice(0,20)];
+  let trimmedReview = [elements[0],elements[1].trim().slice(0,20)];
   return trimmedReview.join(delimiter);
 }
 
