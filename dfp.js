@@ -13,18 +13,24 @@ function limitReview(line, delimiter = ';') { //Review must be the SECOND column
 }
 
 function parseFile (indata, outdata, delimiter = ';') {
-  // IF STATEMENT TO CHECK IF INDATA EXISTS
+  if (!fs.existsSync(indata)) {
+    return -1
+  } else {
+    return `File exists`
+  }
+
+  //Ignore first row of data i.e. let i=1
 }
 
 // Testing
 
-let lineString = 'abcdefghijklmnopqrstuvwxyz;positive';
-lineString = swapColumns(lineString)
-console.log(swapColumns(lineString))
+// let lineString = 'abcdefghijklmnopqrstuvwxyz;positive';
+// lineString = swapColumns(lineString)
+// console.log(swapColumns(lineString))
 
-lineString = limitReview(lineString)
-console.log(limitReview(lineString))
-
+// lineString = limitReview(lineString)
+// console.log(limitReview(lineString))
+console.log(parseFile('datafile.csv'))
 
 
 // Leave this code here for the automated tests
