@@ -27,21 +27,13 @@ function parseFile (indata, outdata, delimiter = ';') {
     const data = fs.readFileSync(indata, 'utf-8');
     const lines = data.split(/\n/);
     for (let line of lines) {
-
+      fs.appendFileSync(outdata, limitReview(swapColumns(line))+'\n')
     }
   }
-
-  //Ignore first row of data i.e. let i=1
 }
 
 // Testing
 
-// let lineString = 'abcdefghijklmnopqrstuvwxyz;positive';
-// lineString = swapColumns(lineString)
-// console.log(swapColumns(lineString))
-
-// lineString = limitReview(lineString)
-// console.log(limitReview(lineString))
 parseFile('testdata.csv', 'outputtest.csv')
 
 
