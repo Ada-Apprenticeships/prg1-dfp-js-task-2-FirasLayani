@@ -7,7 +7,7 @@ function swapColumns(line, delimiter = ';') {
 
 function limitReview(line, delimiter = ';') { //Review must be the SECOND column, Switch to limitString?, or simply use .slice(0,20)? no function?
   let elements = line.split(delimiter);
-  let trimmedReview = [elements[0],elements[1].trim().slice(0,20)];
+  let trimmedReview = [elements[0].trim(),elements[1].trim().slice(0,20)];
   return trimmedReview.join(delimiter);
 }
 
@@ -33,14 +33,15 @@ function parseFile (indata, outdata, delimiter = ';') {
       }
       i++;
     }
-    return records
+    return records;
   }
 }
 
-// Testing
+// Testing - REMOVE IN FINAL VERSION
 
-console.log(parseFile('testdata.csv', 'outputtest.csv', ','))
-console.log(parseFile('datafile.csv', 'outputFile.csv'))
+// console.log(parseFile('testdata.csv', 'outputtest.csv', ','))
+// console.log(parseFile('datafile.csv', 'outputFile.csv'))
+// console.log(parseFile('testing/testdata_5.csv', 'testdata_1_commaoutput.csv'))
 
 // Leave this code here for the automated tests
 module.exports = {
