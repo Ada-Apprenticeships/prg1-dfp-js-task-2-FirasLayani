@@ -28,8 +28,8 @@ function parseFile(indata, outdata, delimiter = ';') {
   // Remove header
   const lines = data.split(/\n/).slice(1);
 
+  // Swap each row's columns and limit the review, then append to the output file
   lines.forEach(line => {
-    // Swap columns and limit the review, then append to the output file
     fs.appendFileSync(outdata, limitReview(swapColumns(line, delimiter), delimiter) + '\n');
   });
   return lines.length - 1;
